@@ -127,8 +127,13 @@ void loop() {
 
         runMotors(0,0);
         delay(250);
-        runMotors(DELTA, -DELTA);
+        runMotors(delta, -delta);
         delay(250);
+        runMotors(delta, delta);
+        delay(200);
+        runMotors(-delta, -delta);
+        delay(250); 
+        runMotors(delta, -delta);
       }
 
       else{
