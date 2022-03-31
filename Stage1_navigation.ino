@@ -34,7 +34,8 @@ int LSENSOR = A2; // Left Sensor on Analog Pin 2
 
 
 
-
+//whatever
+penis
 // global constants testing github
 const int STOP_SPEED = 148;  //stop speed for motors (nominal = 150)
 const int DELTA = 12;        //DELTA is nominal speed
@@ -135,7 +136,7 @@ void loop() {
    }
 
 
-  // Condition Green/Red/Yellow: both sensors off the line, stop
+  // Condition Green/Red/Yellow: both sensors off te line, stop
   /*else{
     turnOnLED(GRN);turnOnLED(RED); turnOnLED(YLW);
     runMotors(0, 0);
