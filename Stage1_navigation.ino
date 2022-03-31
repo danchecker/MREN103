@@ -73,7 +73,7 @@ void setup() {
 
  //this comment is simply meant to test github
  //this comment is also simply meant to test github
- 
+
 
 
 // Main Routine
@@ -122,6 +122,9 @@ void loop() {
 
 
   //Condition if both sensors are on the line
+  /*This should be taking place at the intersection, where the robot reverses
+  a bit, makes a right turn on the line and then pivots back
+  */
    else if(leftLineDetected && rightLineDetected){
     turnOnLED(YLW);
     delay(20);
@@ -132,7 +135,7 @@ void loop() {
    }
 
 
-  // Condition Green/Red/Yellow: both sensors on line, stop
+  // Condition Green/Red/Yellow: both sensors off the line, stop
   /*else{
     turnOnLED(GRN);turnOnLED(RED); turnOnLED(YLW);
     runMotors(0, 0);
