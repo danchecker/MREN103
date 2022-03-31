@@ -4,6 +4,7 @@
 
   Original by H. Fernando, 25/04/2021
   Modified by B. Surgenor, 19/03/2022
+  Further Modified by Naser Al-Obeidat and Daniel Tcherkezian, 03/31/2022
 
 
 This is a basic line following code using On/Off control on the
@@ -16,8 +17,6 @@ differential drive robot and two line-following sensors.
 Servo leftWheel;
 Servo rightWheel;
 
-
-
 // Pin Assignments
 int RED = 10; int GRN = 9; int YLW = 5;
 int BUTTON = 7;         //pushbutton Pin
@@ -28,14 +27,6 @@ int LSENSOR = A2; // Left Sensor on Analog Pin 2
 
 
 
-
-//int MOTOR_R = 3;        // right motor signal pin
-//int MOTOR_L = 4;        // left motor signal pin
-
-
-
-//whatever
-penis
 // global constants testing github
 const int STOP_SPEED = 148;  //stop speed for motors (nominal = 150)
 const int DELTA = 12;        //DELTA is nominal speed
@@ -62,10 +53,6 @@ void setup() {
 
 // Initialize serial and motors
   Serial.begin(9600);   // default 9600, or try 115200
-
-
-
-
   runMotors(0,0);      // make sure motors stopped
   do {
     toggleLED(GRN);         //motors stopped, Green LED flashing
@@ -77,11 +64,9 @@ void setup() {
 
 
 
+
 // Main Routine
 void loop() {
-
-
-
 
 
       //read the sensor value
@@ -91,11 +76,6 @@ void loop() {
       //map the values into millivolts (assuming 3000 mV reference voltage)
       lvalue = map(lvalue,0,1023,0,3000);
       rvalue = map(rvalue,0,1023,0,3000);
-
-
-
-
-
 
 
 
@@ -120,27 +100,29 @@ void loop() {
      runMotors(DELTA, DELTA); }
 
 
-
-
   //Condition if both sensors are on the line
   /*This should be taking place at the intersection, where the robot reverses
   a bit, makes a right turn on the line and then pivots back
   */
    else if(leftLineDetected && rightLineDetected){
     turnOnLED(YLW);
-    delay(20);
-    runMotors(-DELTA, -DELTA);
-    delay(100);
-    runMotors(DELTA, 0);
+
+    // runMotors(-DELTA, -DELTA);
+    // delay(100);
+
+    runMotors(0,0);
     delay(250);
+    runMotors(DELTA, -DELTA);
+    delay(250);
+
    }
 
 
   // Condition Green/Red/Yellow: both sensors off te line, stop
-  /*else{
+   else{
     turnOnLED(GRN);turnOnLED(RED); turnOnLED(YLW);
     runMotors(0, 0);
-    }    */
+    }
 }
 
 
