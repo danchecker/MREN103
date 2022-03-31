@@ -29,7 +29,7 @@ int LSENSOR = A2; // Left Sensor on Analog Pin 2
 
 // global constants testing github
 const int STOP_SPEED = 148;  //stop speed for motors (nominal = 150)
-const int DELTA = 12;        //DELTA is nominal speed
+const int DELTA = 10;        //DELTA is nominal speed
 const int DIFFER = 8;        //DIFFER is speed differential
 boolean leftLineDetected = false;
 boolean rightLineDetected = false;
