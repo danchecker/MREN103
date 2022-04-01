@@ -149,6 +149,7 @@ void loop() {
         // runMotors(delta, -delta);
         // delay(1000);
 
+      }
       else if(mv_value> 670){
          runMotors(delta, delta);
          delay(200);
@@ -160,7 +161,7 @@ void loop() {
          delay(1000);
       }
 
-      }
+
 
       else{
         digitalWrite(GRN, HIGH);
