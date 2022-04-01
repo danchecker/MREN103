@@ -131,7 +131,7 @@ void loop() {
         turnOnLED(YLW);
         runMotors(0,0);
         delay(250);
-        runMotors(delta, -delta);
+        runMotors(delta, 0);
         delay(150);
 
       }
