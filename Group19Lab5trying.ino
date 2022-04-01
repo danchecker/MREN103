@@ -39,7 +39,7 @@ int myAngleB3 = 100;
 // Delta = speed above (+) or below (-) stop speed (must be positive)
 
 const int stopPulse = 149;  // stop speed for motors (default = 150))
-const int delta =   12;       // pulse differential (default = 15)
+const int delta =   10;       // pulse differential (default = 15)
 const float offset = 0;       // offset, slows left wheel (default = 0)
 
 
@@ -105,69 +105,54 @@ void setup() {
 
 void loop() {
 
-      //read the sensor value
-      lvalue = analogRead(LSENSOR);
-      rvalue = analogRead(RSENSOR);
+    //read the sensor value
+    lvalue = analogRead(LSENSOR);
+    rvalue = analogRead(RSENSOR);
 
-      //map the values into millivolts (assuming 3000 mV reference voltage)
-      lvalue = map(lvalue,0,1023,0,4000);
-      rvalue = map(rvalue,0,1023,0,4000);
-      value = analogRead(SHARP);
-      mv_value = map(value,0,1023,0,3300); //convert AtoD count to millivolts
+    //map the values into millivolts (assuming 3000 mV reference voltage)
+    lvalue = map(lvalue,0,1023,0,4000);
+    rvalue = map(rvalue,0,1023,0,4000);
+    value = analogRead(SHARP);
+    mv_value = map(value,0,1023,0,3300); //convert AtoD count to millivolts
 
-      if(lvalue < 2000 && rvalue > 2000){
-        digitalWrite(YLW, HIGH);
-        digitalWrite(GRN, LOW);
-        digitalWrite(RED, LOW);
-        runMotors(delta, 0);
-      }
-      else if(lvalue > 2000 && rvalue < 2000){
-        digitalWrite(RED, HIGH);
-        digitalWrite(YLW, LOW);
-        digitalWrite(GRN, LOW);
-        runMotors(0, delta);
-      }
-      else if(mv_value > 1100){
-        runMotors(0, 0);
-      }
-      else if(lvalue > 2000 && rvalue > 2000){
-        turnOnLED(YLW);
-
-        // runMotors(-DELTA, -DELTA);
-        // delay(100);
-
-        runMotors(0,0);
-        delay(250);
-        runMotors(delta, -delta);
-        delay(250);
-        runMotors(delta, delta);
-        delay(200);
-        // runMotors(delta, delta);
-        // delay(200);
-        // runMotors(0,0);
-        // delay(200);
-        // runMotors(-delta, -delta);
-        // delay(100);
-        // runMotors(delta, -delta);
-        // delay(1000);
-         if(mv_value> 1000){
-         runMotors(0,0);
-         delay(200);
-         runMotors(-delta, -delta);
-         delay(100);
-         runMotors(delta, -delta);
-         delay(1000);
-      }
+    if(lvalue < 2000 && rvalue > 2000){
+      digitalWrite(YLW, HIGH);
+      digitalWrite(GRN, LOW);
+      digitalWrite(RED, LOW);
+      runMotors(delta, 0);
     }
+    else if(lvalue > 2000 && rvalue < 2000){
 
+      digitalWrite(RED, HIGH);
+      digitalWrite(YLW, LOW);
+      digitalWrite(GRN, LOW);
+      runMotors(0, delta);
 
-
-      else{
-        digitalWrite(GRN, HIGH);
-        digitalWrite(RED, LOW);
-        digitalWrite(YLW, LOW);
-        runMotors(delta,delta);
-      }
+    }
+    else if(lvalue > 2000 && rvalue > 2000){
+      turnOnLED(YLW);
+      runMotors(0,0);
+      delay(250);
+      runMotors(delta, -delta);
+      delay(150);
+  }
+  else if(mv_value > 1100){
+    runMotors(0, 0);
+    runMotors(delta, delta);
+    delay(700);
+    runMotors(0,0);
+    delay(300);
+    runMotors(-delta, -delta);
+    delay(500);
+    runMotors(delta, -delta);
+    delay(2000);
+}
+    else{
+      digitalWrite(GRN, HIGH);
+      digitalWrite(RED, LOW);
+      digitalWrite(YLW, LOW);
+      runMotors(delta,delta);
+    }
 
 }
 
