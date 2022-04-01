@@ -140,6 +140,8 @@ void loop() {
         delay(250);
         runMotors(delta, -delta);
         delay(250);
+        runMotors(delta, delta);
+        delay(200);
         // runMotors(delta, delta);
         // delay(200);
         // runMotors(0,0);
@@ -148,7 +150,7 @@ void loop() {
         // delay(100);
         // runMotors(delta, -delta);
         // delay(1000);
-         if(mv_value> 670){
+         if(mv_value> 1000){
          runMotors(delta, delta);
          delay(200);
          runMotors(0,0);
