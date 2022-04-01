@@ -1,11 +1,10 @@
 /********************************************************
-Group14Lab4LineFollowBetter (v1.4)
+Group19Stage1Navigation (v1.4)
 
 Original by H. Fernando, 25/04/2021
 Modified by Naser Al-Obediat and Daniel Tcherkezian, 03/17/2022
 
-This code is designed to have robot follow a black line of width 1.9cm on a white surface.
-
+This was our super successful stage 1 naviation code. 
 *********************************************************/
 
 //include libraries
