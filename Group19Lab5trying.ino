@@ -84,10 +84,10 @@ void setup() {
   pinMode(RSENSOR, INPUT);
   pinMode(SHARP, INPUT);
   // Set-up servo motors
-/*  myServoA.write(posA);         // Servo A starting position
+  myServoA.write(posA);         // Servo A starting position
   myServoA.attach(servoPinA);   // Attaches the servo to the servo object
   myServoB.write(posB);
-  myServoB.attach(servoPinB);*/
+  myServoB.attach(servoPinB);
   //flash green LED
   do{
 
@@ -141,9 +141,9 @@ void loop() {
         runMotors(0,0);
         delay(200);
         runMotors(-delta, -delta);
-        delay(100);
+        delay(300);
         runMotors(delta, -delta);
-        delay(1000);
+        delay(2000);
     }
 
       else{
