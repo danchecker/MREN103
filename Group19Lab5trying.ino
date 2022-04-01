@@ -128,22 +128,24 @@ void loop() {
         runMotors(0, delta);
       }
 
-      }
       else if(lvalue > 2000 && rvalue > 2000){
         turnOnLED(YLW);
         runMotors(0,0);
         delay(250);
         runMotors(delta, -delta);
         delay(250);
-        if(mv_value > 1100){
-          runMotors(0,0);
-          delay(200);
-          runMotors(-delta, -delta);
-          delay(100);
-          runMotors(delta, -delta);
-          delay(1000);
+
       }
+
+      else if(mv_value > 1100){
+        runMotors(0,0);
+        delay(200);
+        runMotors(-delta, -delta);
+        delay(100);
+        runMotors(delta, -delta);
+        delay(1000);
     }
+
       else{
         digitalWrite(GRN, HIGH);
         digitalWrite(RED, LOW);
