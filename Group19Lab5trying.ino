@@ -27,7 +27,7 @@ int MOTOR_L = 4;        // left motor signal pin
 int SHARP = A3;     // Sharp Sensor on Analog Pin 3
 int servoPinA = 11;     // Bucket servomotor #1 pin
 int servoPinB = 12; // Bucket servomotor #2 pin
-int myAngleA1 = 160; //160;    // initial angle, bucket lifts off ground if too high
+int myAngleA1 = 120; //160;    // initial angle, bucket lifts off ground if too high
 int myAngleB1 = 80; //inital angle of bucket
 int posA = myAngleA1;   // if set to 180, bucket lifts robot off of ground
 int posB = myAngleB1;
@@ -104,12 +104,6 @@ void setup() {
 // Main Routine
 
 void loop() {
-      delay (2000);           // A couple seconds to stand back
-      for (posA = myAngleA1; posA >= myAngleA2; posA--)
-      { // Lift action
-      myServoA.write(posA);
-      delay(20);
-      }
 
       //read the sensor value
       lvalue = analogRead(LSENSOR);
