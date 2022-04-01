@@ -130,7 +130,7 @@ void loop() {
       else if(lvalue > 2000 && rvalue > 2000){
         turnOnLED(YLW);
         runMotors(0,0);
-        delay(250);
+        delay(750);
         runMotors(delta, -delta);
         delay(150);
 
