@@ -4,7 +4,7 @@ Group19Stage1Navigation (v1.4)
 Original by H. Fernando, 25/04/2021
 Modified by Naser Al-Obediat and Daniel Tcherkezian, 03/17/2022
 
-This was our super successful stage 1 naviation code. 
+This was our super successful stage 1 naviation code.
 *********************************************************/
 
 //include libraries
@@ -131,8 +131,11 @@ void loop() {
         turnOnLED(YLW);
         runMotors(0,0);
         delay(250);
-        runMotors(delta, -delta);
-        delay(150);
+        /*runMotors(delta, -delta);
+        delay(150);*/
+        do{
+          runMotors(delta, -delta);
+        }while(rvalue < 2000); 
 
       }
 
