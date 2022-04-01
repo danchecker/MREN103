@@ -10,13 +10,11 @@ This code is designed to have robot follow a black line of width 1.9cm on a whit
 
 //include libraries
 #include <Servo.h>
-#include <Servo.h>  // Includes the library
 Servo myServoA;  // Makes a servo object to control servo A
 Servo myServoB; //Makes a servo object to control servo B
 //call upon both wheels
 Servo leftWheel;
 Servo rightWheel;
-
 
 
 // Pin Assignments
@@ -48,9 +46,6 @@ const float offset = 0;       // offset, slows left wheel (default = 0)
 
 const int LSENSOR = A2; // Left Sensor on Analog Pin 1
 const int RSENSOR = A1; // Right Sensor on Analog Pin 2
-const boolean PLOT = false;  //true=plot sensor reading; false=serial monitor output.
-
-
 
 //global variables
 
@@ -89,10 +84,10 @@ void setup() {
   pinMode(RSENSOR, INPUT);
   pinMode(SHARP, INPUT);
   // Set-up servo motors
-    myServoA.write(posA);         // Servo A starting position
-    myServoA.attach(servoPinA);   // Attaches the servo to the servo object
-    myServoB.write(posB);
-    myServoB.attach(servoPinB);
+  myServoA.write(posA);         // Servo A starting position
+  myServoA.attach(servoPinA);   // Attaches the servo to the servo object
+  myServoB.write(posB);
+  myServoB.attach(servoPinB);
   //flash green LED
   do{
 
@@ -146,17 +141,25 @@ void loop() {
 
         // runMotors(-DELTA, -DELTA);
         // delay(100);
+
         runMotors(0,0);
         delay(250);
+
         runMotors(delta, -delta);
         delay(250);
+
         runMotors(delta, delta);
         delay(200);
+
         runMotors(0,0);
         delay(200);
+
         runMotors(-delta, -delta);
         delay(250);
+
         runMotors(delta, -delta);
+        delay(250);
+
       }
 
       else{
