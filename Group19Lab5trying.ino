@@ -39,7 +39,7 @@ int myAngleB3 = 100;
 // Delta = speed above (+) or below (-) stop speed (must be positive)
 
 const int stopPulse = 149;  // stop speed for motors (default = 150))
-const int delta =   12;       // pulse differential (default = 15)
+const int delta =   10;       // pulse differential (default = 15)
 const float offset = 0;       // offset, slows left wheel (default = 0)
 
 
@@ -127,13 +127,7 @@ void loop() {
         digitalWrite(GRN, LOW);
         runMotors(0, delta);
       }
-      else if(mv_value > 1100){
-        runMotors(0,0);
-        delay(200);
-        runMotors(-delta, -delta);
-        delay(100);
-        runMotors(delta, -delta);
-        delay(1000);
+
       }
       else if(lvalue > 2000 && rvalue > 2000){
         turnOnLED(YLW);
@@ -141,9 +135,15 @@ void loop() {
         delay(250);
         runMotors(delta, -delta);
         delay(250);
-        runMotors(delta, delta);
-
+        if(mv_value > 1100){
+          runMotors(0,0);
+          delay(200);
+          runMotors(-delta, -delta);
+          delay(100);
+          runMotors(delta, -delta);
+          delay(1000);
       }
+    }
       else{
         digitalWrite(GRN, HIGH);
         digitalWrite(RED, LOW);
