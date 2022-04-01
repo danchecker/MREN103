@@ -135,18 +135,17 @@ void loop() {
       delay(250);
       runMotors(delta, -delta);
       delay(150);
+      runMotors(0, 0);
+      runMotors(delta, delta);
+      delay(700);
+      runMotors(0,0);
+      delay(300);
+      runMotors(-delta, -delta);
+      delay(500);
+      runMotors(delta, -delta);
+      delay(2000);
   }
-  else if(mv_value > 1500){
-    runMotors(0, 0);
-    runMotors(delta, delta);
-    delay(700);
-    runMotors(0,0);
-    delay(300);
-    runMotors(-delta, -delta);
-    delay(500);
-    runMotors(delta, -delta);
-    delay(2000);
-}
+
     else{
       digitalWrite(GRN, HIGH);
       digitalWrite(RED, LOW);
