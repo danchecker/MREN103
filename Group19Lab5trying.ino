@@ -131,17 +131,14 @@ void loop() {
         turnOnLED(YLW);
         runMotors(0,0);
         delay(250);
-        /*runMotors(delta, -delta);
-        delay(150);*/
-        do{
-          runMotors(delta, -delta);
-        }while(rvalue < 2000); 
+        runMotors(delta, -delta);
+        delay(150);
 
       }
 
       else if(mv_value > 1200){
         runMotors(0,0);
-        delay(200);
+        delay(2000);
         runMotors(-delta, -delta);
         delay(300);
         runMotors(delta, -delta);
