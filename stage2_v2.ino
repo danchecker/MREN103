@@ -89,14 +89,14 @@ if(mv_value<470){
   for (posA = myAngleA1; posA >= myAngleA2; posA--) { // Lift action
     myServoA.write(posA);
     delay(20);}
-  for (posB = myAngleB1; posB <= myAngleB2; posB++){
-      myServoB.write(posB);
-      delay(20);
-    }
+  for (posB = myAngleB2; posB >= myAngleB1; posB--) {
+    myServoB.write(posB);
+    delay(20);
+      }
   }
 
   runMotors(delta,-delta);
-  delay(2000);
+  delay(2300);
   runMotors(-delta,-delta);
   delay(4450);
   runMotors(0,0);
@@ -106,15 +106,15 @@ if(mv_value<470){
   delay(2300);
   runMotors(0,0);
 
-  for (posB = myAngleB2; posB >= myAngleB1; posB--) {
-  myServoB.write(posB);
-  delay(20);
-    }
 
   delay(1000);
   for (posA = myAngleA2; posA <= myAngleA1; posA++) {  // Drop action
-  myServoA.write(posA);
-  delay(20);
+    myServoA.write(posA);
+    delay(20);
+  for (posB = myAngleB1; posB <= myAngleB2; posB++){
+      myServoB.write(posB);
+      delay(20);
+    }
   }
 }
 //********************* Functions (subroutines)*****************
