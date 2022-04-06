@@ -80,26 +80,26 @@ void loop() {
   runMotors(0,0);
   delay(1000); // A couple seconds to stand back
 
-if(mv_value<470){
+if(mv_value<420){
   runMotors(0,0);
   for (posA = myAngleA1; posA >= myAngleA2; posA--) { // Lift action
     myServoA.write(posA);
     delay(20);}
-  }
 
-  if(mv_value > 1200){
-    runMotors(0,0);
-    delay(500);
-    runMotors(delta, -delta);
-    delay(2000);
-    runMotors(-delta,-delta);
-    delay(1000);
-    runMotors(0,0);
-    delay(500);
-    /*delay(500);
-    runMotors(delta,-delta);
-    delay(2300);
-    runMotors(0,0);*/
+    if(mv_value > 1200){
+      runMotors(0,0);
+      delay(500);
+      runMotors(delta, -delta);
+      delay(2000);
+      runMotors(-delta,-delta);
+      delay(1000);
+      runMotors(0,0);
+      delay(500);
+      /*delay(500);
+      runMotors(delta,-delta);
+      delay(2300);
+      runMotors(0,0);*/
+    }
 }
 
   delay(1000);
