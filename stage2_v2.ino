@@ -83,6 +83,9 @@ void loop() {
 
 if(mv_value<470){
 
+
+  runMotors(0,0);
+
   for (posA = myAngleA1; posA >= myAngleA2; posA--) { // Lift action
     myServoA.write(posA);
     delay(20);
@@ -105,7 +108,7 @@ if(mv_value<470){
     }
 
   runMotors(delta,-delta);
-  delay(2000);
+  delay(2300);
   runMotors(0,0);
 
   for (posB = myAngleB2; posB >= myAngleB1; posB--) {
