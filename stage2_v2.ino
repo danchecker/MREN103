@@ -76,12 +76,17 @@ void loop() {
   } while(digitalRead(BUTTON)== LOW);     // Press button to start
 
   runMotors(-delta,-delta);
-  delay(5000);
-  runMotors(0,0);
-  delay(1000);
-           // A couple seconds to stand back
+  delay(500)
+
+  // A couple seconds to stand back
+
+
+while(mv_value>470){
+  runMotors(-delta,-delta);
+}
 
 if(mv_value<470){
+  runMotors(0,0);
 
   for (posA = myAngleA1; posA >= myAngleA2; posA--) { // Lift action
     myServoA.write(posA);
