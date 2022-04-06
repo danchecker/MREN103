@@ -87,7 +87,7 @@ if(mv_value > 1000){
   runMotors(-delta,-delta);
   delay(4000);
   runMotors(0,0);
-  delay(500);
+  delay(500);/
 
   for (posB = myAngleB1; posB <= myAngleB2; posB++){
       myServoB.write(posB);
@@ -126,7 +126,6 @@ if(mv_value > 1000){
   myServoA.write(posA);
   delay(20);*/
 
-  }
 }
 //********************* Functions (subroutines)*****************
 //Toggle an LED on/off
