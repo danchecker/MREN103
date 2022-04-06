@@ -75,41 +75,57 @@ void loop() {
       toggleLED(GRN);                     // Toggle green LED on
   } while(digitalRead(BUTTON)== LOW);     // Press button to start
 
+
+  runMotors(delta, delta);
+  delay(300)
+
+  // A couple seconds to stand back
+
+
+if(mv_value > 1200){
+  runMotors(delta,-delta);
+  delay(2000);
   runMotors(-delta,-delta);
-  delay(4000);
+  delay(3000);
   runMotors(0,0);
-  delay(1000); // A couple seconds to stand back
+  delay(500);
+  delay(500);
 
-if(mv_value<420){
-  runMotors(0,0);
-  for (posA = myAngleA1; posA >= myAngleA2; posA--) { // Lift action
-    myServoA.write(posA);
-    delay(20);}
-
-    if(mv_value > 1200){
-      runMotors(0,0);
-      delay(500);
-      runMotors(delta, -delta);
-      delay(2000);
-      runMotors(-delta,-delta);
-      delay(1000);
-      runMotors(0,0);
-      delay(500);
-      /*delay(500);
-      runMotors(delta,-delta);
-      delay(2300);
-      runMotors(0,0);*/
-    }
-}
-
-  delay(1000);
-  for (posA = myAngleA2; posA <= myAngleA1; posA++) {  // Drop action
-    myServoA.write(posA);
-    delay(20);
   for (posB = myAngleB1; posB <= myAngleB2; posB++){
       myServoB.write(posB);
       delay(20);
     }
+  for (posA = myAngleA1; posA >= myAngleA2; posA--) { // Lift action
+    myServoA.write(posA);
+    delay(20);
+  }
+}
+
+/*if(mv_value<470){
+  runMotors(0,0);
+
+
+  }*/
+
+
+}
+
+
+
+  runMotors(delta,-delta);
+  delay(2000);
+  runMotors(0,0);
+
+  for (posB = myAngleB2; posB >= myAngleB1; posB--) {
+  myServoB.write(posB);
+  delay(20);
+    }
+
+  delay(1000);
+  for (posA = myAngleA2; posA <= myAngleA1; posA++) {  // Drop action
+  myServoA.write(posA);
+  delay(20);
+
   }
 }
 //********************* Functions (subroutines)*****************
