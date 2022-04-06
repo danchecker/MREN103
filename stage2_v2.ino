@@ -26,7 +26,7 @@ int SHARP = A3;     // Sharp Sensor on Analog Pin 3
 const int stopPulse = 149;  // stop speed for motors (default = 150))
 const int delta =   10;       // pulse differential (default = 15)
 const float offset = 20;       // offset, slows left wheel (default = 0)
-int mv_value = 0;
+int mv_value=0;
 
 // Pin Assignments
 int GRN = 9;            // Green LED Pin
@@ -54,6 +54,10 @@ void setup() {
 
 // Set-up button pin as input
   pinMode(BUTTON, INPUT);
+//Set up SHARP
+pinMode(LSENSOR, INPUT);
+pinMode(RSENSOR, INPUT);
+pinMode(SHARP, INPUT);
 
 // Set-up servo motors
   myServoA.write(posA);         // Servo A starting position
@@ -65,23 +69,31 @@ void setup() {
   rightWheel.attach(MOTOR_R);
 
   turnOnLED(GRN);
-}
-
-// Main routine
-void loop() {
-
-
   do {
       toggleLED(GRN);                     // Toggle green LED on
   } while(digitalRead(BUTTON)== LOW);     // Press button to start
 
+}
 
-  runMotors(delta, delta);
-  delay(300); 
+// Main routine
+void loop() {
+//read the sensor value
+  lvalue = analogRead(LSENSOR);
+  rvalue = analogRead(RSENSOR);
+
+  //map the values into millivolts (assuming 3000 mV reference voltage)
+  lvalue = map(lvalue,0,1023,0,4000);
+  rvalue = map(rvalue,0,1023,0,4000);
+  value = analogRead(SHARP);
+  mv_value = map(value,0,1023,0,3300); //convert AtoD count to millivolts
+
+  //
+  // runMotors(delta, delta);
+  // delay(300);
 
   // A couple seconds to stand back
 
-if(mv_value > 1000){
+if(mv_value > 860){
   runMotors(delta,-delta);
   delay(2000);
   runMotors(-delta,-delta);
