@@ -88,7 +88,11 @@ if(mv_value<470){
 
   for (posA = myAngleA1; posA >= myAngleA2; posA--) { // Lift action
     myServoA.write(posA);
-    delay(20);
+    delay(20);}
+  for (posB = myAngleB1; posB <= myAngleB2; posB++){
+      myServoB.write(posB);
+      delay(20);
+    }
   }
 
 
@@ -102,9 +106,6 @@ if(mv_value<470){
   delay(500);
   delay(500);
 
-  for (posB = myAngleB1; posB <= myAngleB2; posB++){
-      myServoB.write(posB);
-      delay(20);
     }
 
   runMotors(delta,-delta);
