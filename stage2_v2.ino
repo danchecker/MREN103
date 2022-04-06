@@ -75,8 +75,9 @@ void loop() {
       toggleLED(GRN);                     // Toggle green LED on
   } while(digitalRead(BUTTON)== LOW);     // Press button to start
 
+
   runMotors(-delta,-delta);
-  delay(500)
+  delay(3000)
 
   // A couple seconds to stand back
 
