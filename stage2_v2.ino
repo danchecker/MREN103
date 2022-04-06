@@ -81,14 +81,12 @@ void loop() {
 
   // A couple seconds to stand back
 
-
-if(mv_value > 1200){
+if(mv_value > 1000){
   runMotors(delta,-delta);
   delay(2000);
   runMotors(-delta,-delta);
-  delay(3000);
+  delay(4000);
   runMotors(0,0);
-  delay(500);
   delay(500);
 
   for (posB = myAngleB1; posB <= myAngleB2; posB++){
@@ -99,6 +97,8 @@ if(mv_value > 1200){
     myServoA.write(posA);
     delay(20);
   }
+  runMotors(-delta, -delta);
+  delay(1000);
 }
 
 /*if(mv_value<470){
@@ -112,7 +112,7 @@ if(mv_value > 1200){
 
 
 
-  runMotors(delta,-delta);
+  /*runMotors(delta,-delta);
   delay(2000);
   runMotors(0,0);
 
@@ -124,7 +124,7 @@ if(mv_value > 1200){
   delay(1000);
   for (posA = myAngleA2; posA <= myAngleA1; posA++) {  // Drop action
   myServoA.write(posA);
-  delay(20);
+  delay(20);*/
 
   }
 }
