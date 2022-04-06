@@ -76,31 +76,17 @@ void loop() {
   } while(digitalRead(BUTTON)== LOW);     // Press button to start
 
 
-  runMotors(-delta,-delta);
-  delay(3000)
+  runMotors(delta, delta);
+  delay(300)
 
   // A couple seconds to stand back
 
 
-while(mv_value>470){
-  runMotors(-delta,-delta);
-}
-
-if(mv_value<470){
-  runMotors(0,0);
-
-  for (posA = myAngleA1; posA >= myAngleA2; posA--) { // Lift action
-    myServoA.write(posA);
-    delay(20);
-  }
-
-
-}
-
+if(mv_value > 1200){
   runMotors(delta,-delta);
   delay(2000);
   runMotors(-delta,-delta);
-  delay(4450);
+  delay(3000);
   runMotors(0,0);
   delay(500);
   delay(500);
@@ -109,6 +95,22 @@ if(mv_value<470){
       myServoB.write(posB);
       delay(20);
     }
+  for (posA = myAngleA1; posA >= myAngleA2; posA--) { // Lift action
+    myServoA.write(posA);
+    delay(20);
+  }
+}
+
+/*if(mv_value<470){
+  runMotors(0,0);
+
+
+  }*/
+
+
+}
+
+
 
   runMotors(delta,-delta);
   delay(2000);
