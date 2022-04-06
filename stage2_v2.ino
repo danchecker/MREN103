@@ -12,66 +12,94 @@ link parallel to the ground. Lift the bucket, uncurl, recurl and then lower the 
 runMotors(delta,-delta);
 delay(1800);
 *****************************************************/
-#include <Servo.h>  // Includes the library
-
+//include libraries
+#include <Servo.h>
 Servo myServoA;  // Makes a servo object to control servo A
 Servo myServoB; //Makes a servo object to control servo B
+//call upon both wheels
 Servo leftWheel;
 Servo rightWheel;
 
+
+// Pin Assignments
+const int RED = 10;           //red LED Pin
+const int GRN = 9;           //green LED Pin
+const int YLW = 5;           //yellow LED Pin
+const int BUTTON = 7;        //pushbutton Pin
 int MOTOR_R = 3;        // right motor signal pin
 int MOTOR_L = 4;        // left motor signal pin
 int SHARP = A3;     // Sharp Sensor on Analog Pin 3
-
-const int stopPulse = 149;  // stop speed for motors (default = 150))
-const int delta =   10;       // pulse differential (default = 15)
-const float offset = 20;       // offset, slows left wheel (default = 0)
-int mv_value=0;
-
-// Pin Assignments
-int GRN = 9;            // Green LED Pin
-int YLW = 5;            // Yellow LED Pin
-int RED = 10;           // Red LED Pin
-int BUTTON = 7;         // Pushbutton Pin
 int servoPinA = 11;     // Bucket servomotor #1 pin
 int servoPinB = 12; // Bucket servomotor #2 pin
-int myAngleA1 = 160; //160;    // initial angle, bucket lifts off ground if too high
+int myAngleA1 = 120; //160;    // initial angle, bucket lifts off ground if too high
 int myAngleB1 = 80; //inital angle of bucket
 int posA = myAngleA1;   // if set to 180, bucket lifts robot off of ground
 int posB = myAngleB1;
 int myAngleA2 = 120;// highest angle (lift), puts almost straight, set to 110,     still bent (i.e. not as high)
-int myAngleB2 = 170;
+int myAngleB2 = 115;
 int myAngleB3 = 100;
 
 
-// Set-up routine
+// Delta = speed above (+) or below (-) stop speed (must be positive)
+
+const int stopPulse = 149;  // stop speed for motors (default = 150))
+const int delta =   10;       // pulse differential (default = 15)
+const float offset = 0;       // offset, slows left wheel (default = 0)
+
+
+
+const int LSENSOR = A2; // Left Sensor on Analog Pin 1
+const int RSENSOR = A1; // Right Sensor on Analog Pin 2
+
+//global variables
+
+int lvalue = 0;  //left sensor value
+int rvalue = 0;  //right sensor value
+int value = 0;
+int mv_value = 0;
+
+
+// Set-up Routine
+
 void setup() {
 
-// Set-up LED pins as outputs
+
+
+// Initialize led pins as outputs.
+
   pinMode(GRN, OUTPUT);
   pinMode(YLW, OUTPUT);
   pinMode(RED, OUTPUT);
 
-// Set-up button pin as input
-  pinMode(BUTTON, INPUT);
-//Set up SHARP
-pinMode(LSENSOR, INPUT);
-pinMode(RSENSOR, INPUT);
-pinMode(SHARP, INPUT);
 
-// Set-up servo motors
+
+// Initialize button pins as inputs
+
+  pinMode(BUTTON, INPUT);
+
+//initialize motor control pins as servo pins
+
+  leftWheel.attach(MOTOR_L);
+  rightWheel.attach(MOTOR_R);
+
+// Initialize line following sensor pins as inputs
+
+  pinMode(LSENSOR, INPUT);
+  pinMode(RSENSOR, INPUT);
+  pinMode(SHARP, INPUT);
+  // Set-up servo motors
   myServoA.write(posA);         // Servo A starting position
   myServoA.attach(servoPinA);   // Attaches the servo to the servo object
   myServoB.write(posB);
   myServoB.attach(servoPinB);
-//initialize motor control pins as servo pins
-  leftWheel.attach(MOTOR_L);
-  rightWheel.attach(MOTOR_R);
+  //flash green LED
+  do{
 
-  turnOnLED(GRN);
-  do {
-      toggleLED(GRN);                     // Toggle green LED on
-  } while(digitalRead(BUTTON)== LOW);     // Press button to start
+             digitalWrite(GRN, HIGH);
+             delay(125);
+             digitalWrite(GRN, LOW);
+             delay(125);
+          }while(digitalRead(BUTTON) == LOW);
 
 }
 
