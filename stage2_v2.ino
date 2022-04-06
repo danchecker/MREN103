@@ -75,17 +75,21 @@ void loop() {
       toggleLED(GRN);                     // Toggle green LED on
   } while(digitalRead(BUTTON)== LOW);     // Press button to start
 
-if(mv_value!=520)
   runMotors(-delta,-delta);
   delay(5000);
   runMotors(0,0);
   delay(1000);
-  delay (1000);           // A couple seconds to stand back
+           // A couple seconds to stand back
+
+if(mv_value<530){
 
   for (posA = myAngleA1; posA >= myAngleA2; posA--) { // Lift action
     myServoA.write(posA);
     delay(20);
   }
+
+
+}
 
   runMotors(delta,-delta);
   delay(1600);
@@ -141,4 +145,4 @@ void turnOnLED(int COLOUR) {
   digitalWrite(YLW, LOW);
   digitalWrite(RED, LOW);
   digitalWrite(COLOUR, HIGH);
-} 
+}
