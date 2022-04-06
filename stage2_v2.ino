@@ -77,7 +77,7 @@ void loop() {
 
 
   runMotors(delta, delta);
-  delay(300)
+  delay(300); 
 
   // A couple seconds to stand back
 
@@ -87,7 +87,7 @@ if(mv_value > 1000){
   runMotors(-delta,-delta);
   delay(4000);
   runMotors(0,0);
-  delay(500);/
+  delay(500);
 
   for (posB = myAngleB1; posB <= myAngleB2; posB++){
       myServoB.write(posB);
