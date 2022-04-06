@@ -95,9 +95,6 @@ if(mv_value<470){
     }
   }
 
-
-}
-
   runMotors(delta,-delta);
   delay(2000);
   runMotors(-delta,-delta);
@@ -105,9 +102,6 @@ if(mv_value<470){
   runMotors(0,0);
   delay(500);
   delay(500);
-
-    }
-
   runMotors(delta,-delta);
   delay(2300);
   runMotors(0,0);
@@ -121,7 +115,6 @@ if(mv_value<470){
   for (posA = myAngleA2; posA <= myAngleA1; posA++) {  // Drop action
   myServoA.write(posA);
   delay(20);
-
   }
 }
 //********************* Functions (subroutines)*****************
