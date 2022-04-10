@@ -149,13 +149,13 @@ void loop() {
     for (posB = myAngleB1; posB >= myAngleB1; posB--){
         myServoB.write(posB);
         delay(20);}
+    runMotors(delta,delta);
+    delay(2500);
     for (posA = myAngleA3; posA <= myAngleA1; posA++) {  // Drop action
     myServoA.write(posA);
-    delay(20);}
-    runMotors(delta,delta);
-    delay(1000);
-    delay(1000);
+    delay(20);
     }
+  }
 
  else{
   digitalWrite(GRN, HIGH);
