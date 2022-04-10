@@ -106,19 +106,26 @@ void loop() {
   else if(mv_value > 1200 && counter==0){
     runMotors(0,0);
     delay(200);
-    runMotors(-delta,-delta);
-    delay(2000);
+    runMotos(-delta, -delta);
+    delay(800);
+    runMotors(-delta,delta);
+    delay(1900);
     runMotors(-delta+offset,-delta);
-    delay(4000);
+    delay(2100);
     for (posB = myAngleB1; posB >= myAngleB2; posB--){
         myServoB.write(posB);
         delay(20);
       }
-      delay (500);           // A couple seconds to stand back
+    delay (500);           // A couple seconds to stand back
+    runMotors(0,0);
+    delay(100);
     for (posA = myAngleA1; posA >= myAngleA3; posA--) { // Lift action
       myServoA.write(posA);
-      delay(20);}
-      counter++;
+      delay(20);
+    }
+    runMotors(delta-offset, delta);
+    delay(2500);
+    counter++;
   }
   else if(mv_value > 1200 && counter==1){
     runMotors(0,0);
@@ -149,6 +156,7 @@ void loop() {
     delay(1000);
     delay(1000);
     }
+
  else{
   digitalWrite(GRN, HIGH);
   digitalWrite(RED, LOW);
