@@ -2,7 +2,7 @@
 Group19Stage1Navigation (v1.4)
 Original by H. Fernando, 25/04/2021
 Modified by Naser Al-Obediat and Daniel Tcherkezian, 03/17/2022
-This was our super successful stage 1 naviation code. 
+This was our super successful stage 1 naviation code.
 *********************************************************/
 //include libraries
 #include <Servo.h>
@@ -27,7 +27,7 @@ int posA = myAngleA1;   // if set to 180, bucket lifts robot off of ground
 int posB = myAngleB1;
 int myAngleA2 = 95;// highest angle (lift), puts almost straight, set to 110,     still bent (i.e. not as high)
 int myAngleB2 = 40;
-int myAngleB3 = 120; 
+int myAngleB3 = 120;
 int myAngleA3 = 135;
 
 
@@ -43,7 +43,7 @@ int lvalue = 0;  //left sensor value
 int rvalue = 0;  //right sensor value
 int value = 0;
 int mv_value = 0;
-int counter=0; 
+int counter=0;
 
 // Set-up Routine
 void setup() {
@@ -106,54 +106,47 @@ void loop() {
   else if(mv_value > 1200 && counter==0){
     runMotors(0,0);
     delay(200);
-     runMotors(-delta,-delta); 
+    runMotors(-delta,-delta);
     delay(2000);
-    runMotors(delta, delta);
-    delay(500);
-    runMotors(0,0); 
-    delay(1000);
-    runMotors(-delta,delta); 
-    delay(2100);
-    runMotors(-delta,-delta); 
-    delay(1900);
-    runMotors(-delta,-delta); 
-    delay(1000);
-    counter++;  
+    runMotors(-delta+offset,-delta);
+    delay(4000);
     for (posB = myAngleB1; posB >= myAngleB2; posB--){
-        myServoB.write(posB); 
-        delay(20); 
+        myServoB.write(posB);
+        delay(20);
       }
+      delay (500);           // A couple seconds to stand back
     for (posA = myAngleA1; posA >= myAngleA3; posA--) { // Lift action
       myServoA.write(posA);
       delay(20);}
-  } 
+      counter++;
+  }
   else if(mv_value > 1200 && counter==1){
     runMotors(0,0);
     delay(200);
-     runMotors(-delta,-delta); 
+     runMotors(-delta,-delta);
     delay(2000);
     runMotors(delta, delta);
     delay(500);
-    runMotors(0,0); 
+    runMotors(0,0);
     delay(1000);
-    runMotors(-delta,delta); 
+    runMotors(-delta,delta);
     delay(2100);
-    runMotors(-delta,-delta); 
+    runMotors(-delta,-delta);
     delay(1900);
-    runMotors(0,0); 
+    runMotors(0,0);
     delay(1000);
-    counter--;  
+    counter--;
     for (posB = myAngleB2; posB <= myAngleB3; posB++){
-      myServoB.write(posB); 
+      myServoB.write(posB);
       delay(20); }
     for (posB = myAngleB1; posB >= myAngleB1; posB--){
-        myServoB.write(posB); 
+        myServoB.write(posB);
         delay(20);}
     for (posA = myAngleA3; posA <= myAngleA1; posA++) {  // Drop action
     myServoA.write(posA);
     delay(20);}
-    runMotors(delta,delta); 
-    delay(1000); 
+    runMotors(delta,delta);
+    delay(1000);
     delay(1000);
     }
  else{
