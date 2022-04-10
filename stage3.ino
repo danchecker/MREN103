@@ -106,7 +106,7 @@ void loop() {
   else if(mv_value > 1200 && counter==0){
     runMotors(0,0);
     delay(200);
-    runMotos(-delta, -delta);
+    runMotors(-delta, -delta);
     delay(800);
     runMotors(-delta,delta);
     delay(1900);
@@ -130,7 +130,7 @@ void loop() {
   else if(mv_value > 1200 && counter==1){
     runMotors(0,0);
     delay(200);
-     runMotors(-delta,-delta);
+    runMotors(-delta,-delta);
     delay(2000);
     runMotors(delta, delta);
     delay(500);
