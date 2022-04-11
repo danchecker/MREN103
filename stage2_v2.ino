@@ -108,9 +108,12 @@ void loop() {
     delay(200);
     runMotors(-delta, -delta);
     delay(800);
-    while(
-    runMotors(-delta,delta);
-    delay(1700);
+    runMotors(-delta, delta);
+    delay(400);
+    while(lvalue < 2000){
+      runMotors(-delta,delta);
+      delay(250);
+    }
     runMotors(-delta+offset,-delta);
     delay(2100);
     for (posB = myAngleB1; posB >= myAngleB2; posB--){
