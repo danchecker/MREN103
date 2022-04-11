@@ -109,9 +109,9 @@ void loop() {
     runMotors(-delta, -delta);
     delay(800);
     runMotors(-delta, delta);
-    delay(400);
+    delay(800);
     while(lvalue < 2000){
-      runMotors(0,delta);
+      runMotors(-delta,delta);
       delay(250);
     }
     runMotors(-delta+offset,-delta);
